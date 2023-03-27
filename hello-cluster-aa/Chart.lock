@@ -1,0 +1,6 @@
+dependencies:
+- name: mednax-library-charts
+  repository: file://../mednax-library-charts
+  version: 0.1.0
+digest: sha256:e62abf9d3abab3abb16f1c5217dbc4a94cd2e742737ef3cb433fe1cf28f1ab17
+generated: "2021-09-14T19:19:53.2863309Z"

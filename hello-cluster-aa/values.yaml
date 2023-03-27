@@ -1,0 +1,14 @@
+image: mednax.azurecr.io/mednax/hello-crud
+
+deployment:
+  spec:
+    replicas: 3
+
+dev:
+  keyvault_name: "sdbi-akv-eastus-dev"
+test:
+  keyvault_name: "sdbi-akv-eastus-test"
+stage:
+  keyvault_name: "sdbi-akv-eastus-stage"
+prod:
+  keyvault_name: "sdbi-akv-eastus-prod"

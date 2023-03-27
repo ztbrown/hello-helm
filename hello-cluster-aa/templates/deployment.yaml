@@ -1,0 +1,31 @@
+{{- include "mednax-library-charts.deployment" (list . "new-app.deployment") -}}
+{{- define "new-app.deployment" -}}
+spec:
+  revisionHistoryLimit: 1
+  template:
+    spec:
+      containers:
+      - name: {{ .Release.Name }} 
+        image: {{ .Values.image }}:{{ .Values.version | default "0" }}
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+        imagePullPolicy: Always
+        securityContext:
+          readOnlyRootFilesystem: false
+        resources:
+          requests:
+            cpu: "1.0"
+            memory: "1G"
+          limits:
+            cpu: "1.0"
+            memory: "1G"
+        env:  
+        - name: ENVIRONMENT
+          value: {{ .Values.environment }}-force-change
+        - name: SHA
+          value: {{ .Values.sha }}
+{{- end -}}
